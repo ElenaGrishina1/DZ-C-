@@ -6,28 +6,36 @@ Console.Clear();
 
 int size = 4;
 
+int[] array = FillArray(size);
+PrintArray(array);
+Console.WriteLine();
+System.Console.WriteLine($"Сумма чисел, стоящих на нечетной позиции, соcтаваляет {SumArray(array)} ");
+
 int[] FillArray(int size)
 {
     int[] array = new int[size];
-    for (int i = 0; i < size; i++)
-    {
-        array[i] = new Random().Next(1, 100);
-    }
-    return array;
+    for (int i = 0; i < array.Length; i++)
+        array[i] = new Random().Next(100, 999);
+    return (array);
 }
 
-void PrintArray(int[] arr)
+int SumArray(int[] array)
 {
     int sum = 0;
-    System.Console.WriteLine();
     for (int i = 0; i < size; i++)
     {
-        System.Console.Write(arr[i] + " ");
-        if (i % 2 > 0) sum += arr[i];
+        Console.Write(array[i] + " ");
+        if (i % 2 > 0) sum += array[i];
     }
-    System.Console.WriteLine();
-    System.Console.WriteLine($"Сумма чисел, стоящих на нечетной позиции, соcтаваляет {sum} ");
-    System.Console.WriteLine();
+    return sum;
 }
 
-PrintArray(FillArray(size));
+void PrintArray(int[] array)
+{
+    int i;
+    Console.Write("[");
+
+    for (i = 0; i < array.Length; i++)
+        Console.Write($"{array[i]}, ");
+    Console.Write("]");
+}
