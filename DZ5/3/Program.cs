@@ -5,10 +5,15 @@ Console.Clear();
 System.Console.WriteLine();
 
 int size = new Random().Next(1, 11);
-
+double[] array = FillArray(size);
 System.Console.WriteLine($"Количетсов элементов массива: {size}");
+PrintArray(array);
+System.Console.WriteLine();
+System.Console.WriteLine($"Минимальное значение массива {array.Min()}, максимальное значение массива {array.Max()}");
+System.Console.WriteLine($"Разница между минимальным и максимальным значениями массива составляет {DiffMinMax(array)}");
+System.Console.WriteLine();
 
-double[] FillSourceArray(int size)
+double[] FillArray(int size)
 {
     double[] array = new double[size];
     for (int i = 0; i < size; i++)
@@ -18,17 +23,18 @@ double[] FillSourceArray(int size)
     return array;
 }
 
-void PrintDiffMinMax(double[] arr)
+void PrintArray(double[] array)
 {
-    for (int i = 0; i < arr.Length; i++)
-    {
-        System.Console.WriteLine(arr[i]);
-    }
-    double difference = arr.Max() - arr.Min();
-    System.Console.WriteLine($"Минимальное значение массива {arr.Min()}, максимальное значение массива {arr.Max()}");
-    System.Console.WriteLine($"Разница между минимальным и максимальным значениями массива составляет {difference}");
-    System.Console.WriteLine();
+    int i;
+    Console.Write("[");
+
+    for (i = 0; i < array.Length; i++)
+        Console.Write($"{array[i]}, ");
+    Console.Write("]");
 }
 
-PrintDiffMinMax(FillSourceArray(size));
-System.Console.WriteLine();
+double DiffMinMax(double[] arr)
+{
+    double difference = arr.Max() - arr.Min();
+    return difference;
+}
