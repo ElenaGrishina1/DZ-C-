@@ -6,28 +6,34 @@ Console.Clear();
 System.Console.WriteLine();
 Console.Write("Введите длину массива: ");
 int size = Convert.ToInt32(Console.ReadLine()); ;
+int[] array = FillArray(size);
+PrintArray(array);
+Console.WriteLine();
+Console.WriteLine($"Количество чётных чисел в массиве: {CountNumber(array)}");
 
 int[] FillArray(int size)
 {
     int[] array = new int[size];
-    for (int i = 0; i < size; i++)
-    {
-        array[i] = new Random().Next(100, 1000);
-    }
-    return array;
-}
-
-void PrintResult(int[] array)
-{
-    int even = 0;
     for (int i = 0; i < array.Length; i++)
-    {
-        System.Console.Write(array[i] + " ");
-        if (array[i] % 2 == 0) even++;
-    }
-    System.Console.WriteLine();
-    System.Console.WriteLine($" -> {even} Количество четных чисел ");
-    System.Console.WriteLine();
+        array[i] = new Random().Next(100, 999);
+    return (array);
 }
 
-PrintResult(FillArray(size));
+int CountNumber(int[] array)
+{
+    int count = 0;
+    for (int i = 0; i < array.Length; i++)
+        if (array[i] % 2 == 0)
+            count++;
+    return count;
+}
+
+void PrintArray(int[] array)
+{
+    int i;
+    Console.Write("[");
+
+    for (i = 0; i < array.Length; i++)
+        Console.Write($"{array[i]}, ");
+    Console.Write("]");
+}
