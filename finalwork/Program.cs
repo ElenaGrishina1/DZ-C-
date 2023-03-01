@@ -20,7 +20,14 @@ string[] ArrayLessThree(string[] array)
 	return newArray;
 }
 
-
+void PrintArray(string[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write($"{array[i]} ");
+    }
+    Console.WriteLine();
+}
 Console.WriteLine("Исходный массив: ");
 PrintArray(array);
 ArrayLessThree(array);
